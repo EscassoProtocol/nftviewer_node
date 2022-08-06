@@ -1,0 +1,122 @@
+.custom-text{
+    color: black;
+    font-size: 1.5rem;
+}
+.search-title{
+    width: 50%;
+    height: 25%;
+    color: white;
+}
+.search-contract{
+    width: 50%;
+    height: 50%;
+}
+.space{
+    width: 2.5%;
+}
+.btn-search{
+    width: 10%;
+    height: 50%;
+}
+.search-token-id{
+    width: 30%;
+    height: 50%;
+}
+.search-div{
+    background-color: #373737;
+    width: 50%;
+    height: 27.5%;
+}
+@media (min-width: 0px) and (max-width: 239.98px) {
+    .custom-text{
+        font-size: 0.4rem;
+    }
+    .img-for-button{
+        width: 90%;
+        height: 70%;
+    }
+    .search-div{
+        width: 75%;
+        height: 50%;
+    }
+}
+@media (min-width: 240px) and (max-width: 299.98px) {
+    .custom-text{
+        font-size: 0.4rem;
+    }
+    .img-for-button{
+        width: 90%;
+        height: 70%;
+    }
+    .search-div{
+        width: 75%;
+        height: 50%;
+    }
+}
+@media (min-width: 300px) and (max-width: 359.98px) {
+    .custom-text{
+        font-size: 0.6rem;
+    }
+    .img-for-button{
+        width: 90%;
+        height: 70%;
+    }
+    .search-div{
+        width: 70%;
+        height: 45%;
+    }
+}
+@media (min-width: 360px) and (max-width: 479.98px) {
+    .custom-text{
+        font-size: 0.8rem;
+    }
+    .img-for-button{
+        width: 80%;
+        height: 80%;
+    }
+    .search-div{
+        width: 60%;
+        height: 40%;
+    }
+}
+@media (min-width: 480px) and (max-width: 575.98px) {
+    .custom-text{
+        font-size: 0.9rem;
+    }
+    .img-for-button{
+        width: 80%;
+        height: 80%;
+    }
+    .search-div{
+        width: 55%;
+        height: 35%;
+    }
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .custom-text{
+        font-size: 1.2rem;
+    }
+    .img-for-button{
+        width: 80%;
+        height: 80%;
+    }
+    .search-div{
+        width: 55%;
+        height: 35%;
+    }
+}
+@media (min-width: 768px) and (max-width: 799.98px) {
+    .custom-text{
+        font-size: 1.2rem;
+    }
+    .img-for-button{
+        width: 80%;
+        height: 80%;
+    }
+}
+@media (min-width: 800px) and (max-width: 991.98px) {
+    .img-for-button{
+        width: 80%;
+        height: 80%;
+    }
+}

@@ -1,0 +1,12 @@
+.main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: white;
+    font-size: 1rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.row-mail{
+    margin-left: 0.1rem;
+}

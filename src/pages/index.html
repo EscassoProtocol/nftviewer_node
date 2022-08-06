@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>NFT Viewer - Search</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../images/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+    <link href="../imports/bootstrap/bootstrap-5.2.min.css" rel="stylesheet">
+    <link href="../styles/loading.css" rel="stylesheet">
+    <link href="../styles/menu.css" rel="stylesheet">
+    <link href="../styles/container.css" rel="stylesheet">
+    <link href="../styles/warning.css" rel="stylesheet">
+    <link href="../styles/index.css" rel="stylesheet">
+</head>
+<body style="background:#161616">
+<script type="module" src="../imports/web3-1.7.4.min.js"></script>
+<script type="module" src="../modules/index.mjs"></script>
+<div class="d-flex justify-content-center align-items-start">
+    <div class="col custom-main-col">
+        <div class="row custom-top-row g-0 p-0 d-flex justify-content-start align-items-center">
+            <div class="top-div col g-0 p-0 d-flex justify-content-start align-items-center h-100">
+                <div class="menu-button-div col g-0 p-0 d-flex justify-content-center align-items-center h-100">
+                    <button class="menu btn btn-dark p-0 shadow-none button-with-img" type="button">
+                        <div class="row g-0 p-0 d-flex justify-content-center align-items-center h-100">
+                            <img class="img-fluid img-for-button" src="../images/menu_white_48dp.svg"/>
+                        </div>
+                    </button>
+                </div>
+                <div class="logo-div col g-0 p-0 d-flex justify-content-center align-items-center h-100">
+                    <img class="img-fluid h-100" src="../images/logo.svg"/>
+                </div>
+            </div>
+        </div>
+        <div class="col custom-center-row g-0 p-0 d-flex justify-content-center align-items-center">
+            <div class="search-div rounded-3">
+                <div class="custom-text search-title d-flex justify-content-start align-items-center fw-bold ms-2">Search:</div>
+                <div class="row d-flex justify-content-center align-items-center w-100 h-75 g-0 p-0">
+                    <div class="search-contract">
+                        <input class="contract custom-text d-flex justify-content-start align-items-center w-100 h-100 ps-2" type="text" placeholder="Contract Address"/>
+                    </div>
+                    <div class="space"></div>
+                    <div class="search-token-id">
+                        <input class="token-id custom-text d-flex justify-content-start align-items-center w-100 h-100 ps-2" type="number" placeholder="Token ID"/>
+                    </div>
+                    <div class="space"></div>
+                    <button class="btn-search btn btn-primary m-0 p-0">
+                        <div class="d-flex justify-content-center align-items-center w-100 h-100">
+                            <img class="img-fluid img-for-button" src="../images/search_white_48dp.svg"/>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="background-menu menu-nav-background invisible"></div>
+<nav class="menu-nav invisible">
+    <div class="menu-top-div row g-0 p-0 d-flex justify-content-start align-items-center">
+        <div class="top-div col g-0 p-0 d-flex justify-content-start align-items-center h-100">
+            <div class="menu-button-div col g-0 p-0 d-flex justify-content-center align-items-center h-100">
+                <button class="menu btn btn-dark p-0 shadow-none button-with-img" type="button">
+                    <div class="row g-0 p-0 d-flex justify-content-center align-items-center h-100">
+                        <img class="img-fluid img-for-button" src="../images/menu_white_48dp.svg"/>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+    <ul class="menu-list">
+        <li class="header-menu"><a id="header-menu"></a></li>
+        <li><a href="../pages/index.html" class="a-home">Home</a></li>
+        <li><a href="../pages/settings.html" class="a-settings">Settings</a></li>
+        <li><a href="../pages/contact.html" class="a-contact">Contact</a></li>
+        <li><a href="#" class="a-thanks">Thanks</a></li>
+        <li><a href="#" class="a-about">About</a></li>
+    </ul>
+</nav>
+<div class="custom-spinner-back show" id="spinner-back">
+    <div class="d-flex justify-content-center show" id="spinner-front">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="custom-spinner custom-spinner-size spinner-border d-none d-md-block" role="status"></div>
+                <div class="custom-spinner custom-spinner-size-mob spinner-border d-md-none" role="status"></div>
+            </div>
+            <div class="row d-flex justify-content-center align-items-center">
+                <p></p>
+                Loading...
+            </div>
+        </div>
+    </div>
+</div>
+<div class="dialog-background invisible"></div>
+<div class="custom-dialog-warning rounded-3 invisible">
+    <div class="row custom-dialog-header-warning rounded-3 g-0">
+        <div class="custom-dialog-header-title d-flex rounded-3 justify-content-start align-items-center g-0 w-100">
+            <label class="custom-title-warning form-check-label custom-font-size-warning d-inline-block text-truncate text-center w-100 fw-bold">No Mobile Version</label>
+        </div>
+    </div>
+    <div class="row custom-dialog-body-warning rounded-3 g-0">
+        <div class="row custom-dialog-row-top-warning g-0 d-flex justify-content-center align-items-center">
+            <label class="custom-text-warning form-check-label custom-dialog-col custom-font-size-warning text-center m-0">Unfortunately we don't have a mobile version yet. Access the website from a notebook or a desktop computer.</label>
+        </div>
+        <div class="row custom-dialog-row-bottom-warning g-0 d-flex justify-content-center align-items-center">
+            <div class="custom-div-separator-warning"></div>
+            <a class="custom-text-warning form-check-label custom-dialog-col custom-font-size-warning text-center m-0">Thank you for understanding.</a>
+            <button class="invisible custom-btn-warning btn btn-dark custom-dialog-col custom-font-size-warning text-center w-75 m-0 p-0 mb-4"></button>
+            <div class="custom-div-separator-warning"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html> 

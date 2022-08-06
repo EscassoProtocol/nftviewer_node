@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>NFT Viewer - Settings</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../images/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+    <link href="../imports/bootstrap/bootstrap-5.2.min.css" rel="stylesheet">
+    <link href="../styles/toast.css" rel="stylesheet">
+    <link href="../styles/warning.css" rel="stylesheet">
+    <link href="../styles/loading.css" rel="stylesheet">
+    <link href="../styles/password_dialog.css" rel="stylesheet">
+    <link href="../styles/dialog.css" rel="stylesheet">
+    <link href="../styles/container.css" rel="stylesheet">
+    <link href="../styles/menu.css" rel="stylesheet">
+    <link href="../styles/settings.css" rel="stylesheet">
+</head>
+<body style="background:#161616">
+<script src="../imports/bootstrap/bootstrap-5.2.bundle.min.js"></script>
+<script src="../imports/crypto-js-4.1.1.min.js"></script>
+<script type="module" src="../imports/web3-1.7.4.min.js"></script>
+<script src="../imports/detect-provider-1.2.min.js"></script>
+<script src="../imports/merkletree-2022.06.24.js"></script>
+<script src="../imports/keccak256-1.0.6.min.js"></script>
+<script type="module" src="../modules/settings.mjs"></script>
+<div class="d-flex justify-content-center align-items-start">
+    <div class="col custom-main-col">
+        <div class="row custom-top-row g-0 p-0 d-flex justify-content-start align-items-center">
+            <div class="top-div col g-0 p-0 d-flex justify-content-start align-items-center h-100">
+                <div class="menu-button-div col g-0 p-0 d-flex justify-content-center align-items-center h-100">
+                    <button class="menu btn btn-dark p-0 shadow-none button-with-img" type="button">
+                        <div class="row g-0 p-0 d-flex justify-content-center align-items-center h-100">
+                            <img class="img-fluid img-for-button" src="../images/menu_white_48dp.svg"/>
+                        </div>
+                    </button>
+                </div>
+                <div class="logo-div col g-0 p-0 d-flex justify-content-center align-items-center h-100">
+                    <img class="img-fluid h-100" src="../images/logo.svg"/>
+                </div>
+            </div>
+        </div>
+        <div class="col custom-center-row g-0 p-0 d-flex justify-content-center align-items-center">
+            <div class="col-settings w-100 h-100">
+                <div class="row d-flex justify-content-start align-items-center ms-4 mt-1 mb-4 fw-bold">
+                    <div>Settings</div>
+                </div>
+                <div class="card ms-4 mt-2 pb-2">
+                    <div class="row d-flex justify-content-start align-items-center ms-2 mb-3"></div>
+                    <div class="ms-4">
+                        <div class="col-4 m-0 p-0 mt-1 mb-1">Import the Settings File:</div>
+                        <div class="col-6 d-flex justify-content-start align-items-center m-0 p-0 mt-1 mb-1">
+                            <input type="file" id="settings-file" onchange="settings.loadSettings()"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="card ms-4 mt-2 pb-3">
+                    <div class="row d-flex justify-content-start align-items-center ms-2 mb-3"></div>
+                    <div class="row d-flex justify-content-start align-items-center ms-4 mt-1">
+                        <div class="row h-50">RPC Provider Url:</div>
+                        <div class="row h-50 w-100">
+                            <input class="rpc-provider-url col-9" type="text" placeholder="https://polygon-mumbai.g.alchemy.com/v2/BRYeNJh27a_ysayZoBhhpKjoiiqE-Umf">
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-start align-items-center ms-4 mt-1">
+                        <div class="row h-50">Maximum Blocks per Request:</div>
+                        <div class="row h-50 w-100">
+                            <input class="max-blocks col-9" type="text" placeholder="2000">
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-start align-items-center ms-4 mt-1">
+                        <div class="row h-50">Set the IPFS Gateway Prefix:</div>
+                        <div class="row h-50 w-100">
+                            <input class="ipfs-gateway col-9" type="text" placeholder="https://ipfs.io/ipfs/">
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-start align-items-center ms-4 mt-1">
+                        <div class="row h-50">Explorer (External Service):</div>
+                        <div class="row h-50 w-100">
+                            <input class="explorer col-9" type="text" placeholder="polygonscan.com/">
+                        </div>
+                    </div>
+                </div>
+                <div class="card ms-4 mt-2 pb-2">
+                    <div class="row d-flex justify-content-start align-items-center ms-2 mb-3"></div>
+                    <div class="row d-flex justify-content-start align-items-center ms-4 mt-1">
+                        <div class="row h-50">Set the IPFS Server Url:</div>
+                        <div class="row h-50">
+                            <input class="ipfs-server-url col-9" type="text" placeholder="IPFS Server Url">
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-start align-items-center ms-4 mt-3 pt-2 pb-2">
+                        <div class="row d-flex justify-content-start align-items-center m-0 p-0 w-25 h-100">
+                            <div class="d-flex justify-content-start align-items-center m-0 p-0 w-100 h-100">
+                                <label class="d-flex justify-content-start custom-font-size form-check-label text-truncate text-start m-0 p-0" for="use-own-ipfs-server">Use Own IPFS Server:</label>
+                                <div class="ms-2"></div>
+                                <input class="form-check-input" type="checkbox" id="use-own-ipfs-server">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card ms-4 mt-2 pb-2">
+                    <div class="row d-flex justify-content-start align-items-center ms-2 mb-3"></div>
+                    <div class="row d-flex justify-content-start align-items-center ms-4 mt-1">
+                        <div class="row">Set the New Password for the Private Key:</div>
+                        <div class="row load-file d-flex justify-content-start align-items-center m-0 p-0">
+                            <div class="col-4 m-0 p-0 mt-3 mb-3">Load the PK File:</div>
+                            <div class="col-6 d-flex justify-content-start align-items-center m-0 p-0 mt-3 mb-3">
+                                <input type="file" id="pk-file"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <input class="load-file-input old-password-pk" type="password" placeholder="Old Password">
+                            <div class="load-file-space"></div>
+                            <input class="load-file-input new-password-pk" type="password" placeholder="New Password">
+                            <div class="load-file-space"></div>
+                            <input class="load-file-input repeat-password-pk" type="password" placeholder="Repeat the New Password">
+                            <div class="load-file-space"></div>
+                            <button class="load-file-button change-pk btn btn-primary d-inline-block text-truncate text-center" type="button">Change Password</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card ms-4 mt-2 pb-2">
+                    <div class="row d-flex justify-content-start align-items-center ms-2 mb-3"></div>
+                    <div class="row d-flex justify-content-start align-items-center ms-4 mt-1">
+                        <div class="row">Set the New Password for the Proof:</div>
+                        <div class="row load-file d-flex justify-content-start align-items-center m-0 p-0">
+                            <div class="col-4 m-0 p-0 mt-3 mb-3">Load the Proof File:</div>
+                            <div class="col-6 d-flex justify-content-start align-items-center m-0 p-0 mt-3 mb-3">
+                                <input type="file" id="proof-file"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <input class="load-file-input old-password-proof col-4" type="password" placeholder="Old Password">
+                            <div class="load-file-space"></div>
+                            <input class="load-file-input new-password-proof col-4" type="password" placeholder="New Password">
+                            <div class="load-file-space"></div>
+                            <input class="load-file-input repeat-password-proof col-4" type="password" placeholder="Repeat the New Password">
+                            <div class="load-file-space"></div>
+                            <button class="load-file-button change-proof btn btn-primary d-inline-block text-truncate text-center" type="button">Change Password</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card ms-4 mt-2 pb-2">
+                    <div class="row d-flex justify-content-start align-items-center ms-2 mb-3"></div>
+                    <div class="row d-flex justify-content-start align-items-center ms-4 mt-1">
+                        <div class="row">Update MailBox:</div>
+                        <div class="row update-mailbox-row d-flex justify-content-start align-items-center m-0 p-0 mt-4">
+                            <div class="update-mailbox-title-pk d-flex justify-content-start align-items-center m-0 p-0">Load your PK File:</div>
+                            <div class="update-mailbox-file d-flex justify-content-start align-items-center m-0 p-0 ms-4">
+                                <input type="file" id="pk-file-update"/>
+                            </div>
+                        </div>
+                        <div class="row update-mailbox-row d-flex justify-content-start align-items-center m-0 p-0 mt-4">
+                            <div class="update-mailbox-title-proof d-flex justify-content-start align-items-center m-0 p-0">Load your Proof File:</div>
+                            <div class="update-mailbox-file d-flex justify-content-start align-items-center m-0 p-0 ms-4">
+                                <input type="file" id="proof-file-update"/>
+                            </div>
+                        </div>
+                        <div class="row update-mailbox-row d-flex justify-content-start align-items-center m-0 p-0 mt-4">
+                            <div class="update-mailbox-button d-flex justify-content-start align-items-center m-0 p-0">
+                                <button class="update-mailbox btn btn-primary d-inline-block text-truncate text-center" type="button">Update MailBox</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card ms-4 mt-2 pb-2">
+                    <div class="row d-flex justify-content-start align-items-center ms-2 mb-3"></div>
+                    <div class="col create-proof d-flex justify-content-start align-items-center ms-4 mt-1">
+                        <div>Create Proof:</div>
+                        <div class="d-flex justify-content-start align-items-center m-0 p-0 ms-3">
+                            <button class="create-proof-btn btn btn-primary d-inline-block text-truncate text-center" type="button">Create Proof</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card ms-4 mt-2 pb-2">
+                    <div class="row d-flex justify-content-start align-items-center ms-2 mb-3"></div>
+                    <div class="col update-proof d-flex justify-content-start align-items-center ms-4 mt-1">
+                        <div>Update Proof:</div>
+                        <div class="d-flex justify-content-start align-items-center m-0 p-0 ms-3">
+                            <button class="update-proof-btn btn btn-primary d-inline-block text-truncate text-center" type="button">Update Proof</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card ms-4 mt-2 pb-2">
+                    <div class="row d-flex justify-content-start align-items-center ms-2 mb-3"></div>
+                    <div class="row d-flex justify-content-start align-items-center ms-4 mt-1">
+                        <div class="row">Copy Mail to Any Server:</div>
+                        <div class="row load-file d-flex justify-content-start align-items-center m-0 p-0">
+                            <div class="col-4 m-0 p-0 mt-3 mb-3">Load the Proof File:</div>
+                            <div class="col-6 d-flex justify-content-start align-items-center m-0 p-0 mt-3 mb-3">
+                                <input type="file" id="proof-file-copy"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-mail-id d-flex justify-content-start align-items-start m-0 p-0 ms-4">
+                        <div>Mail ID:&nbsp;</div>
+                        <div class="space"></div>
+                        <input class="mail-id" type="number"/>
+                    </div>
+                    <div class="row d-flex justify-content-start align-items-center w-50 m-0 p-0 ms-4 mt-3">
+                        <input class="from-server" type="url" placeholder="From Server">
+                    </div>
+                    <div class="row row-copy-servers d-flex justify-content-start align-items-end m-0 p-0 ms-4 mt-3">
+                        <div class="div-copy-servers m-0 p-0">
+                            <textarea class="to-servers w-100 h-100 ps-2" type="text" placeholder="To Servers &#10&#10Servers separated by commas - Ex.: https://escasso.com, https://bestipfsserver.com/, https://otherserver.com/"></textarea>
+                        </div>
+                        <div class="space-copy-servers m-0 p-0"></div>
+                        <div class="btn-copy-servers d-flex align-items-end m-0 p-0">
+                            <button class="load-file-button copy-mail btn btn-primary d-inline-block text-truncate text-center w-100 h-100" type="button">Copy Mail</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card ms-4 mt-2 pb-2">
+                    <div class="row d-flex justify-content-start align-items-center ms-2 mb-3"></div>
+                    <div class="row d-flex justify-content-start align-items-center ms-4 mt-1">
+                        <div class="row">Copy IPFS Files to Any Server</div>
+                    </div>
+                    <div class="row row-copy-servers d-flex justify-content-start align-items-end m-0 p-0 ms-4 mt-3">
+                        <div class="div-copy-servers m-0 p-0">
+                            <textarea class="servers-list w-100 h-100 ps-2" type="text" placeholder="Servers List &#10&#10Servers separated by commas - Ex.: https://escasso.com, https://bestipfsserver.com/, https://otherserver.com/"></textarea>
+                        </div>
+                    </div>
+                    <div class="col d-flex justify-content-start align-items-center ms-4 mt-3">
+                        <label class="d-flex justify-content-start custom-font-size form-check-label text-truncate text-start m-0 p-0" for="copy-always">Copy IPFS Files:</label>
+                        <div class="ms-2"></div>
+                        <input class="form-check-input" type="checkbox" id="copy-always">
+                    </div>
+                </div>
+                <div class="card ms-4 mt-2 pb-2">
+                    <div class="row d-flex justify-content-start align-items-center ms-2 mb-3"></div>
+                    <div class="row d-flex justify-content-start align-items-center ms-4 mt-1">
+                        <div class="row">Lease Another IPFS Server:</div>
+                        <div class="row load-file d-flex justify-content-start align-items-center m-0 p-0">
+                            <div class="col-4 m-0 p-0 mt-3 mb-3">Load the Proof File:</div>
+                            <div class="col-6 d-flex justify-content-start align-items-center m-0 p-0 mt-3 mb-3">
+                                <input type="file" id="proof-file-lease"/>
+                            </div>
+                        </div>
+                        <div class="row lease-ipfs d-flex justify-content-start align-items-center m-0 p-0 mt-3">
+                            <div class="col-3 d-flex justify-content-start align-items-center m-0 p-0">Set the IPFS Server ID:</div>
+                            <input class="col-2 d-flex justify-content-start align-items-center server-id m-0 p-0 ms-4" type="number"/>
+                            <div class="col-4 d-flex justify-content-start align-items-center m-0 p-0 ms-4 h-100">
+                                <button class="lease-server btn btn-primary d-inline-block text-truncate text-center" type="button">Lease Server</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card ms-4 mt-2 pb-2">
+                    <div class="row d-flex justify-content-start align-items-center ms-2 mb-3"></div>
+                    <div class="row d-flex justify-content-start align-items-center ms-4 mt-1 pb-2">
+                        <div class="row d-flex justify-content-start align-items-center m-0 p-0 w-25 h-100">
+                            <div class="d-flex justify-content-start align-items-center m-0 p-0 w-100 h-100">
+                                <label class="d-flex justify-content-start custom-font-size form-check-label text-truncate text-start m-0 p-0" for="disable-check-updates">Disable Check Updates:</label>
+                                <div class="ms-2"></div>
+                                <input class="form-check-input" type="checkbox" id="disable-check-updates">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-buttons d-flex justify-content-center align-items-center ms-4 mt-2 mb-5">
+                    <button class="save btn btn-primary d-inline-block text-truncate text-center" type="button">Save Changes</button>
+                    <div class="space"></div>
+                    <button class="export btn btn-success d-inline-block text-truncate text-center" type="button">Export Settings</button>
+                    <div class="space"></div>
+                    <button class="reset btn btn-warning d-inline-block text-truncate text-center" type="button">Reset Settings</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="background-menu menu-nav-background invisible"></div>
+<nav class="menu-nav invisible">
+    <div class="menu-top-div row g-0 p-0 d-flex justify-content-start align-items-center">
+        <div class="top-div col g-0 p-0 d-flex justify-content-start align-items-center h-100">
+            <div class="menu-button-div col g-0 p-0 d-flex justify-content-center align-items-center h-100">
+                <button class="menu btn btn-dark p-0 shadow-none button-with-img" type="button">
+                    <div class="row g-0 p-0 d-flex justify-content-center align-items-center h-100">
+                        <img class="img-fluid img-for-button" src="../images/menu_white_48dp.svg"/>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+    <ul class="menu-list">
+        <li class="header-menu"><a id="header-menu"></a></li>
+        <li><a href="../pages/index.html" class="a-home">Home</a></li>
+        <li><a href="../pages/settings.html" class="a-settings">Settings</a></li>
+        <li><a href="../pages/contact.html" class="a-contact">Contact</a></li>
+        <li><a href="#" class="a-thanks">Thanks</a></li>
+        <li><a href="#" class="a-about">About</a></li>
+    </ul>
+</nav>
+<div class="position-fixed custom-toast-background bottom-0 end-50 p-3 d-flex justify-content-center align-items-center">
+    <div class="toast custom-toast d-none d-flex justify-content-center align-items-center" role="alert" data-bs-delay="2500" aria-live="assertive" aria-atomic="true">
+        <div class="toast-body custom-toast-body"></div>
+    </div>
+</div>
+<div class="dialog-background invisible"></div>
+<div class="custom-dialog-warning rounded-3 invisible">
+    <div class="row custom-dialog-header-warning rounded-3 g-0">
+        <div class="custom-dialog-header-title d-flex rounded-3 justify-content-start align-items-center g-0 w-100">
+            <label class="custom-title-warning form-check-label custom-font-size-warning d-inline-block text-truncate text-center w-100 fw-bold">No Mobile Version</label>
+        </div>
+    </div>
+    <div class="row custom-dialog-body-warning rounded-3 g-0">
+        <div class="row custom-dialog-row-top-warning g-0 d-flex justify-content-center align-items-center">
+            <label class="custom-text-warning form-check-label custom-dialog-col custom-font-size-warning text-center m-0">Unfortunately we don't have a mobile version yet. Access the website from a notebook or a desktop computer.</label>
+        </div>
+        <div class="row custom-dialog-row-bottom-warning g-0 d-flex justify-content-center align-items-center">
+            <div class="custom-div-separator-warning"></div>
+            <a class="custom-text-warning form-check-label custom-dialog-col custom-font-size-warning text-center m-0">Thank you for understanding.</a>
+            <button class="invisible custom-btn-warning btn btn-dark custom-dialog-col custom-font-size-warning text-center w-75 m-0 p-0 mb-4"></button>
+            <div class="custom-div-separator-warning"></div>
+        </div>
+    </div>
+</div>
+<div class="custom-spinner-back" id="spinner-back">
+    <div class="d-flex justify-content-center" id="spinner-front">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="custom-spinner custom-spinner-size spinner-border d-none d-md-block" role="status"></div>
+                <div class="custom-spinner custom-spinner-size-mob spinner-border d-md-none" role="status"></div>
+            </div>
+            <div class="row d-flex justify-content-center align-items-center">
+                <p></p>
+                Loading...
+            </div>
+        </div>
+    </div>
+</div>
+<div class="password-dialog rounded-3 invisible">
+    <div class="titles-row row rounded-3 d-flex justify-content-center align-items-center w-100 g-0">
+        <div class="row password-font-size">
+            <label class="row password-dialog-title-1 d-flex justify-content-center align-items-center text-truncate text-center w-100 h-50 fw-bold"></label>
+            <label class="row password-dialog-title-2 d-flex justify-content-center align-items-center text-truncate text-center w-100 h-50"></label>
+        </div>
+    </div>
+    <div class="password-buttons-row row d-flex justify-content-center align-items-center custom-dialog-body rounded-3 g-0">
+        <div class="row password-div password-style d-flex align-items-start m-0 p-0">
+            <input class="password password-font-size h-100" type="password" placeholder="Your Password" id="password">
+            <button class="show-password btn btn-primary h-100 m-0 p-0">
+                <div class="d-flex justify-content-center align-items-center w-100 h-100">
+                    <img class="w-100 h-100" src="../images/visibility_white_24dp.svg"/>
+                </div>
+            </button>
+        </div>
+        <div class="row repeat-password-div password-style d-flex align-items-start mt-1 d-none m-0 p-0">
+            <input class="repeat-password password-font-size h-100" type="password" placeholder="Repeat Password" id="repeat-password">
+            <button class="show-password btn btn-primary h-100 m-0 p-0">
+                <div class="d-flex justify-content-center align-items-center w-100 h-100">
+                    <img class="w-100 h-100" src="../images/visibility_white_24dp.svg"/>
+                </div>
+            </button>
+        </div>
+        <div class="buttons-row buttons-style row g-0 d-flex justify-content-end align-items-center">
+            <button class="password-dialog-back d-flex justify-content-center align-items-center btn password-button-size btn-primary d-inline-block text-truncate text-center" type="button">
+                <label class="password-font-size">Back</label>
+            </button>
+            <div class="custom-button-separator"></div>
+            <button class="password-dialog-ok d-flex justify-content-center align-items-center btn password-button-size btn-primary d-inline-block text-truncate text-center" type="button">
+                <label class="password-font-size">OK</label>
+            </button>
+        </div>
+    </div>
+</div>
+</body>
+</html> 

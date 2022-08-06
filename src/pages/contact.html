@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>NFT Viewer - Contact</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../images/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+    <link href="../imports/bootstrap/bootstrap-5.2.min.css" rel="stylesheet">
+    <link href="../styles/loading.css" rel="stylesheet">
+    <link href="../styles/password_dialog.css" rel="stylesheet">
+    <link href="../styles/toast.css" rel="stylesheet">
+    <link href="../styles/warning.css" rel="stylesheet">
+    <link href="../styles/dialog.css" rel="stylesheet">
+    <link href="../styles/container.css" rel="stylesheet">
+    <link href="../styles/menu.css" rel="stylesheet">
+    <link href="../styles/contact.css" rel="stylesheet">
+</head>
+<body style="background:#161616">
+<script src="../imports/bootstrap/bootstrap-5.2.bundle.min.js"></script>
+<script type="module" src="../imports/web3-1.7.4.min.js"></script>
+<script src="../imports/detect-provider-1.2.min.js"></script>
+<script src="../imports/merkletree-2022.06.24.js"></script>
+<script src="../imports/keccak256-1.0.6.min.js"></script>
+<script src="../imports/crypto-js-4.1.1.min.js"></script>
+<script type="module" src="../modules/contact.mjs"></script>
+<div class="d-flex justify-content-center align-items-start">
+    <div class="col custom-main-col">
+        <div class="row custom-top-row g-0 p-0 d-flex justify-content-start align-items-center">
+            <div class="top-div col g-0 p-0 d-flex justify-content-start align-items-center h-100">
+                <div class="menu-button-div col g-0 p-0 d-flex justify-content-center align-items-center h-100">
+                    <button class="menu btn btn-dark p-0 shadow-none button-with-img" type="button">
+                        <div class="row g-0 p-0 d-flex justify-content-center align-items-center h-100">
+                            <img class="img-fluid img-for-button" src="../images/menu_white_48dp.svg"/>
+                        </div>
+                    </button>
+                </div>
+                <div class="logo-div col g-0 p-0 d-flex justify-content-center align-items-center h-100">
+                    <img class="img-fluid h-100" src="../images/logo.svg"/>
+                </div>
+            </div>
+        </div>
+        <div class="col custom-center-row g-0 p-0 d-flex justify-content-center align-items-center">
+            <div class="custom-dialog rounded-3">
+                <div class="row custom-dialog-header rounded-3 g-0">
+                    <div class="custom-dialog-header-title d-flex rounded-3 justify-content-start align-items-center g-0 w-100">
+                        <label class="custom-font-size d-inline-block text-truncate text-center w-100 fw-bold">Send a Message to Me:</label>
+                    </div>
+                </div>
+                <div class="row custom-dialog-body rounded-3 g-0">
+                    <div class="row custom-subject-row g-0 d-flex justify-content-center align-items-center">
+                        <input class="subject custom-subject custom-font-size ps-2" maxlength="75" placeholder="The Subject">
+                    </div>
+                    <div class="row custom-textarea-row g-0 d-flex justify-content-center align-items-center">
+                        <textarea class="message custom-textarea custom-font-size ps-2" maxlength="35000" placeholder="Your Message"></textarea>
+                    </div>
+                    <div class="row custom-buttons-row g-0 d-flex justify-content-end align-items-center">
+                        <div class="pinned-proof-div d-flex justify-content-center align-items-center h-100 d-inline">
+                            <label class="custom-font-size form-check-label text-truncate text-start" for="pinned">Pinned:</label>
+                            <div class="custom-button-separator"></div>
+                            <input class="pinned form-check-input m-0 p-0" type="checkbox" id="pinned">
+                            <div class="custom-button-separator"></div>
+                            <div class="custom-font-size d-flex justify-content-center align-items-center">Proof:</div>
+                            <div class="custom-button-separator"></div>
+                            <div class="proof-div">
+                                <input class="custom-font-size proof d-flex justify-content-end align-items-center w-100" type="file" id="file" onchange="contact.loadProof()"/>
+                            </div>
+                        </div>
+                        <div class="custom-button-separator"></div>
+                        <button class="back d-flex justify-content-center align-items-center btn custom-button-size btn-primary" type="button">
+                            <label class="custom-font-size">Back</label>
+                        </button>
+                        <div class="custom-button-separator"></div>
+                        <button class="send d-flex justify-content-center align-items-center btn custom-button-size btn-primary" type="button">
+                            <label class="custom-font-size">Send</label>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="background-menu menu-nav-background invisible"></div>
+<nav class="menu-nav invisible">
+    <div class="menu-top-div row g-0 p-0 d-flex justify-content-start align-items-center">
+        <div class="top-div col g-0 p-0 d-flex justify-content-start align-items-center h-100">
+            <div class="menu-button-div col g-0 p-0 d-flex justify-content-center align-items-center h-100">
+                <button class="menu btn btn-dark p-0 shadow-none button-with-img" type="button">
+                    <div class="row g-0 p-0 d-flex justify-content-center align-items-center h-100">
+                        <img class="img-fluid img-for-button" src="../images/menu_white_48dp.svg"/>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+    <ul class="menu-list">
+        <li class="header-menu"><a id="header-menu"></a></li>
+        <li><a href="../pages/index.html" class="a-home">Home</a></li>
+        <li><a href="../pages/settings.html" class="a-settings">Settings</a></li>
+        <li><a href="../pages/contact.html" class="a-contact">Contact</a></li>
+        <li><a href="#" class="a-thanks">Thanks</a></li>
+        <li><a href="#" class="a-about">About</a></li>
+    </ul>
+</nav>
+<div class="custom-spinner-back" id="spinner-back">
+    <div class="d-flex justify-content-center" id="spinner-front">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="custom-spinner custom-spinner-size spinner-border d-none d-md-block" role="status"></div>
+                <div class="custom-spinner custom-spinner-size-mob spinner-border d-md-none" role="status"></div>
+            </div>
+            <div class="row d-flex justify-content-center align-items-center">
+                <p></p>
+                Loading...
+            </div>
+        </div>
+    </div>
+</div>
+<div class="password-dialog rounded-3 invisible">
+    <div class="titles-row row rounded-3 d-flex justify-content-center align-items-center w-100 g-0">
+        <div class="row password-font-size">
+            <label class="row password-dialog-title-1 d-flex justify-content-center align-items-center text-truncate text-center w-100 h-50 fw-bold"></label>
+            <label class="row password-dialog-title-2 d-flex justify-content-center align-items-center text-truncate text-center w-100 h-50"></label>
+        </div>
+    </div>
+    <div class="password-buttons-row row d-flex justify-content-center align-items-center custom-dialog-body rounded-3 g-0">
+        <div class="row password-div password-style d-flex align-items-start m-0 p-0">
+            <input class="password password-font-size h-100" type="password" placeholder="Your Password" id="password">
+            <button class="show-password btn btn-primary h-100 m-0 p-0">
+                <div class="d-flex justify-content-center align-items-center w-100 h-100">
+                    <img class="w-100 h-100" src="../images/visibility_white_24dp.svg"/>
+                </div>
+            </button>
+        </div>
+        <div class="row repeat-password-div password-style d-flex align-items-start mt-1 d-none m-0 p-0">
+            <input class="repeat-password password-font-size h-100" type="password" placeholder="Repeat Password" id="repeat-password">
+            <button class="show-password btn btn-primary h-100 m-0 p-0">
+                <div class="d-flex justify-content-center align-items-center w-100 h-100">
+                    <img class="w-100 h-100" src="../images/visibility_white_24dp.svg"/>
+                </div>
+            </button>
+        </div>
+        <div class="buttons-row buttons-style row g-0 d-flex justify-content-end align-items-center">
+            <button class="password-dialog-back d-flex justify-content-center align-items-center btn password-button-size btn-primary" type="button">
+                <label class="password-font-size">Back</label>
+            </button>
+            <div class="custom-button-separator"></div>
+            <button class="password-dialog-ok d-flex justify-content-center align-items-center btn password-button-size btn-primary" type="button">
+                <label class="password-font-size">OK</label>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="position-fixed custom-toast-background bottom-0 end-50 p-3 d-flex justify-content-center align-items-center">
+    <div class="toast custom-toast d-none d-flex justify-content-center align-items-center" role="alert" data-bs-delay="2500" aria-live="assertive" aria-atomic="true">
+        <div class="toast-body custom-toast-body"></div>
+    </div>
+</div>
+<div class="dialog-background invisible"></div>
+<div class="custom-dialog-warning rounded-3 invisible">
+    <div class="row custom-dialog-header-warning rounded-3 g-0">
+        <div class="custom-dialog-header-title d-flex rounded-3 justify-content-start align-items-center g-0 w-100">
+            <label class="custom-title-warning form-check-label custom-font-size-warning d-inline-block text-truncate text-center w-100 fw-bold">No Mobile Version</label>
+        </div>
+    </div>
+    <div class="row custom-dialog-body-warning rounded-3 g-0">
+        <div class="row custom-dialog-row-top-warning g-0 d-flex justify-content-center align-items-center">
+            <label class="custom-text-warning form-check-label custom-dialog-col custom-font-size-warning text-center m-0">Unfortunately we don't have a mobile version yet. Access the website from a notebook or a desktop computer.</label>
+        </div>
+        <div class="row custom-dialog-row-bottom-warning g-0 d-flex justify-content-center align-items-center">
+            <div class="custom-div-separator-warning"></div>
+            <a class="custom-text-warning form-check-label custom-dialog-col custom-font-size-warning text-center m-0">Thank you for understanding.</a>
+            <button class="invisible custom-btn-warning btn btn-dark custom-dialog-col custom-font-size-warning text-center w-75 m-0 p-0 mb-4"></button>
+            <div class="custom-div-separator-warning"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html> 

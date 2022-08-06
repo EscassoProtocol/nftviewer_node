@@ -1,0 +1,151 @@
+.col-settings {
+    color: white;
+    font-size: 1.25rem;
+}
+.space {
+    width: 1%
+}
+.card{
+    background-color: #212121;
+    width: 90%;
+}
+.card-buttons{
+    background-color: #212121;
+    width: 90%;
+    height: 3.5rem;
+}
+.load-file{
+    width: 45%;
+}
+.load-file-input{
+    width: 26%;
+}
+.load-file-space{
+    width: 1%;
+}
+.load-file-button{
+    width: 15%;
+}
+.update-mailbox-row{
+    width: 90%;
+}
+.update-mailbox-title-pk{
+    width: 15%;
+}
+.update-mailbox-file{
+    width: 22.5%;
+}
+.update-mailbox-title-proof{
+    width: 17.5%;
+}
+.update-mailbox-button{
+    width: 15%;
+}
+.update-proof{
+    width: 65%;
+}
+.lease-ipfs{
+    width: 65%;
+}
+.col-mail-id{
+    width: 33%;
+}
+.row-copy-servers{
+    width: 90%;
+    height: 10rem;
+}
+.div-copy-servers{
+    width: 85%;
+    height: 100%;
+}
+.space-copy-servers{
+    width: 2%;
+}
+.btn-copy-servers{
+    width: 13%;
+}
+.create-proof{
+    width: 65%;
+}
+.custom-center-row{
+    height: auto;
+    background-color: #121212;
+}
+@media (min-width: 0px) and (max-width: 239.98px) {
+    .col-settings{
+        font-size: 0.3rem;
+    }
+    .load-file-input{
+        width: 16%;
+    }
+    .btn {
+        font-size: 0.3rem;
+    }
+}
+@media (min-width: 240px) and (max-width: 359.98px) {
+    .col-settings{
+        font-size: 0.3rem;
+    }
+    .load-file-input{
+        width: 16%;
+    }
+    .btn {
+        font-size: 0.3rem;
+    }
+}
+@media (min-width: 360px) and (max-width: 479.98px) {
+    .col-settings{
+        font-size: 0.4rem;
+    }
+    .load-file-input{
+        width: 21%;
+    }
+    .btn {
+        font-size: 0.4rem;
+    }
+}
+@media (min-width: 480px) and (max-width: 575.98px) {
+    .col-settings{
+        font-size: 0.5rem;
+    }
+    .load-file-input{
+        width: 23%;
+    }
+    .btn {
+        font-size: 0.5rem;
+    }
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .col-settings{
+        font-size: 0.6rem;
+    }
+    .load-file-input{
+        width: 24%;
+    }
+    .btn {
+        font-size: 0.6rem;
+    }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .col-settings{
+        font-size: 0.7rem;
+    }
+    .load-file-input{
+        width: 24%;
+    }
+    .btn {
+        font-size: 0.7rem;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .col-settings{
+        font-size: 0.9rem;
+    }
+    .load-file-input{
+        width: 25%;
+    }
+    .btn {
+        font-size: 0.9rem;
+    }
+}

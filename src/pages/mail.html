@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>NFT Viewer - Mail</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../images/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+    <link href="../imports/bootstrap/bootstrap-5.2.min.css" rel="stylesheet">
+    <link href="../styles/loading.css" rel="stylesheet">
+    <link href="../styles/password_dialog.css" rel="stylesheet">
+    <link href="../styles/toast.css" rel="stylesheet">
+    <link href="../styles/warning.css" rel="stylesheet">
+    <link href="../styles/dialog.css" rel="stylesheet">
+    <link href="../styles/mail.css" rel="stylesheet">
+</head>
+<body style="background:#161616">
+<script src="../imports/bootstrap/bootstrap-5.2.bundle.min.js"></script>
+<script type="module" src="../imports/web3-1.7.4.min.js"></script>
+<script src="../imports/detect-provider-1.2.min.js"></script>
+<script src="../imports/crypto-js-4.1.1.min.js"></script>
+<script type="module" src="../modules/mail.mjs"></script>
+<div class="container w-100 h-100">
+    <div class="main col h-100 w-100 ms-4 mb-4">
+        <div class="row-mail d-flex justify-content-start align-items-center mt-3 mb-3">My MailBox CID:&nbsp;<div class="mailbox-cid fw-bold"></div></div>
+        <div class="row-mail d-flex justify-content-start align-items-center mt-1">Select your private key file:</div>
+        <input class="row-mail d-flex justify-content-start align-items-center" type="file" id="pk-file" onchange="mail.loadPK()"/>
+        <div class="row-mail d-flex justify-content-start align-items-center mt-1">Set the IPFS server URL:</div>
+        <input class="row-mail d-flex justify-content-start align-items-center mt-1 ipfs-server-url" type="text"/>
+        <div class="row-mail d-flex justify-content-start align-items-center mt-1">Select your proof file:</div>
+        <input class="row-mail d-flex justify-content-start align-items-center" type="file" id="proof-file" onchange="mail.loadProof()"/>
+        <div class="row-mail d-flex justify-content-start align-items-center mt-3">Total of Mails:&nbsp;<div class="total fw-bold">0</div></div>
+        <div class="row-mail d-flex justify-content-start align-items-center mt-1">Set the Mail ID:</div>
+        <input class="row-mail d-flex justify-content-start align-items-center mt-1 mail-id" type="number"/>
+        <button class="row-mail get-mail btn btn-primary mt-3" type="button">Get Mail</button>
+        <div class="row-mail d-flex justify-content-start align-items-center mt-3">Mail CID:&nbsp;<div class="mail-cid fw-bold"></div></div>
+        <div class="row-mail d-flex justify-content-start align-items-center mt-1">Date:&nbsp;<div class="mail-time fw-bold"></div></div>
+        <div class="row-mail d-flex justify-content-start align-items-center mt-1">From:&nbsp;<div class="mail-from fw-bold"></div></div>
+        <div class="row-mail d-flex justify-content-start align-items-center mt-1">Paid:&nbsp;<div class="mail-paid fw-bold"></div></div>
+        <div class="row-mail d-flex justify-content-start align-items-center mt-1">Subject:</div>
+        <div class="row-mail subject d-flex justify-content-start align-items-center"></div>
+        <div class="row-mail d-flex justify-content-start align-items-center mt-1">Message:</div>
+        <div class="row-mail message d-flex justify-content-start align-items-center"></div>
+    </div>
+</div>
+<div class="custom-spinner-back" id="spinner-back">
+    <div class="d-flex justify-content-center" id="spinner-front">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="custom-spinner custom-spinner-size spinner-border d-none d-md-block" role="status"></div>
+                <div class="custom-spinner custom-spinner-size-mob spinner-border d-md-none" role="status"></div>
+            </div>
+            <div class="row d-flex justify-content-center align-items-center">
+                <p></p>
+                Loading...
+            </div>
+        </div>
+    </div>
+</div>
+<div class="password-dialog rounded-3 invisible">
+    <div class="titles-row row rounded-3 d-flex justify-content-center align-items-center w-100 g-0">
+        <div class="row password-font-size">
+            <label class="row password-dialog-title-1 d-flex justify-content-center align-items-center text-truncate text-center w-100 h-50 fw-bold"></label>
+            <label class="row password-dialog-title-2 d-flex justify-content-center align-items-center text-truncate text-center w-100 h-50"></label>
+        </div>
+    </div>
+    <div class="password-buttons-row row d-flex justify-content-center align-items-center custom-dialog-body rounded-3 g-0">
+        <div class="row password-div password-style d-flex align-items-start m-0 p-0">
+            <input class="password password-font-size h-100" type="password" placeholder="Your Password" id="password">
+            <button class="show-password btn btn-primary h-100 m-0 p-0">
+                <div class="d-flex justify-content-center align-items-center w-100 h-100">
+                    <img class="w-100 h-100" src="../images/visibility_white_24dp.svg"/>
+                </div>
+            </button>
+        </div>
+        <div class="row repeat-password-div password-style d-flex align-items-start mt-1 d-none m-0 p-0">
+            <input class="repeat-password password-font-size h-100" type="password" placeholder="Repeat Password" id="repeat-password">
+            <button class="show-password btn btn-primary h-100 m-0 p-0">
+                <div class="d-flex justify-content-center align-items-center w-100 h-100">
+                    <img class="w-100 h-100" src="../images/visibility_white_24dp.svg"/>
+                </div>
+            </button>
+        </div>
+        <div class="buttons-row buttons-style row g-0 d-flex justify-content-end align-items-center">
+            <button class="password-dialog-back d-flex justify-content-center align-items-center btn password-button-size btn-primary" type="button">
+                <label class="password-font-size">Back</label>
+            </button>
+            <div class="custom-button-separator"></div>
+            <button class="password-dialog-ok d-flex justify-content-center align-items-center btn password-button-size btn-primary" type="button">
+                <label class="password-font-size">OK</label>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="position-fixed custom-toast-background bottom-0 end-50 p-3 d-flex justify-content-center align-items-center">
+    <div class="toast custom-toast d-none d-flex justify-content-center align-items-center" role="alert" data-bs-delay="2500" aria-live="assertive" aria-atomic="true">
+        <div class="toast-body custom-toast-body"></div>
+    </div>
+</div>
+<div class="dialog-background invisible"></div>
+<div class="custom-dialog-warning rounded-3 invisible">
+    <div class="row custom-dialog-header-warning rounded-3 g-0">
+        <div class="custom-dialog-header-title d-flex rounded-3 justify-content-start align-items-center g-0 w-100">
+            <label class="custom-title-warning form-check-label custom-font-size-warning d-inline-block text-truncate text-center w-100 fw-bold">No Mobile Version</label>
+        </div>
+    </div>
+    <div class="row custom-dialog-body-warning rounded-3 g-0">
+        <div class="row custom-dialog-row-top-warning g-0 d-flex justify-content-center align-items-center">
+            <label class="custom-text-warning form-check-label custom-dialog-col custom-font-size-warning text-center m-0">Unfortunately we don't have a mobile version yet. Access the website from a notebook or a desktop computer.</label>
+        </div>
+        <div class="row custom-dialog-row-bottom-warning g-0 d-flex justify-content-center align-items-center">
+            <div class="custom-div-separator-warning"></div>
+            <a class="custom-text-warning form-check-label custom-dialog-col custom-font-size-warning text-center m-0">Thank you for understanding.</a>
+            <button class="invisible custom-btn-warning btn btn-dark custom-dialog-col custom-font-size-warning text-center w-75 m-0 p-0 mb-4"></button>
+            <div class="custom-div-separator-warning"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html> 

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>NFT Viewer - Server</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../images/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+    <link href="../imports/bootstrap/bootstrap-5.2.min.css" rel="stylesheet">
+    <link href="../styles/loading.css" rel="stylesheet">
+    <link href="../styles/password_dialog.css" rel="stylesheet">
+    <link href="../styles/toast.css" rel="stylesheet">
+    <link href="../styles/warning.css" rel="stylesheet">
+    <link href="../styles/server.css" rel="stylesheet">
+</head>
+<body style="background:#161616">
+<script src="../imports/bootstrap/bootstrap-5.2.bundle.min.js"></script>
+<script type="module" src="../imports/web3-1.7.4.min.js"></script>
+<script src="../imports/detect-provider-1.2.min.js"></script>
+<script src="../imports/crypto-js-4.1.1.min.js"></script>
+<script type="module" src="../modules/server.mjs"></script>
+<div class="container w-100 h-100">
+    <div class="main col h-100 w-100 ms-4 mb-4">
+        <div class="row-server d-flex justify-content-start align-items-center mt-1">Set the IPFS server URL:</div>
+        <input class="row-server d-flex justify-content-start align-items-center mt-1 ipfs-server-url" type="text"/>
+        <div class="row-server d-flex justify-content-start align-items-center mt-1">Set the Fee:</div>
+        <input class="row-server d-flex justify-content-start align-items-center mt-1 server-fee" type="number"/>
+        <button class="row-server mint-server btn btn-primary mt-3" type="button">Mint Server</button>
+        <div class="col row-server d-flex justify-content-start align-items-center mt-5" style="width: 30%;">
+            <div class="d-flex justify-content-start align-items-center">Server ID:</div>
+            <div class="ms-2"></div>
+            <div class="d-flex justify-content-start align-items-center">
+                <input class="server-id" type="number"/>
+            </div>
+            <div class="ms-2"></div>
+            <div class="d-flex justify-content-start align-items-center">
+                <button class="get-settings btn btn-primary" type="button">Get Settings</button>
+            </div>
+        </div>
+        <div class="invisible update mt-4">
+            <div class="row-server d-flex justify-content-start align-items-center">Update the IPFS server URL:</div>
+            <input class="row-server d-flex justify-content-start align-items-center mt-1 update-ipfs-server-url" type="text"/>
+            <div class="row-server d-flex justify-content-start align-items-center mt-1">Update the Fee:</div>
+            <input class="row-server d-flex justify-content-start align-items-center mt-1 update-server-fee" type="number"/>
+            <button class="row-server update-server btn btn-primary mt-3" type="button">Update Server</button>
+        </div>
+    </div>
+</div>
+<div class="custom-spinner-back" id="spinner-back">
+    <div class="d-flex justify-content-center" id="spinner-front">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="custom-spinner custom-spinner-size spinner-border d-none d-md-block" role="status"></div>
+                <div class="custom-spinner custom-spinner-size-mob spinner-border d-md-none" role="status"></div>
+            </div>
+            <div class="row d-flex justify-content-center align-items-center">
+                <p></p>
+                Loading...
+            </div>
+        </div>
+    </div>
+</div>
+<div class="dialog-background invisible"></div>
+<div class="custom-dialog-warning rounded-3 invisible">
+    <div class="row custom-dialog-header-warning rounded-3 g-0">
+        <div class="custom-dialog-header-title d-flex rounded-3 justify-content-start align-items-center g-0 w-100">
+            <label class="custom-title-warning form-check-label custom-font-size-warning d-inline-block text-truncate text-center w-100 fw-bold">No Mobile Version</label>
+        </div>
+    </div>
+    <div class="row custom-dialog-body-warning rounded-3 g-0">
+        <div class="row custom-dialog-row-top-warning g-0 d-flex justify-content-center align-items-center">
+            <label class="custom-text-warning form-check-label custom-dialog-col custom-font-size-warning text-center m-0">Unfortunately we don't have a mobile version yet. Access the website from a notebook or a desktop computer.</label>
+        </div>
+        <div class="row custom-dialog-row-bottom-warning g-0 d-flex justify-content-center align-items-center">
+            <div class="custom-div-separator-warning"></div>
+            <a class="custom-text-warning form-check-label custom-dialog-col custom-font-size-warning text-center m-0">Thank you for understanding.</a>
+            <button class="invisible custom-btn-warning btn btn-dark custom-dialog-col custom-font-size-warning text-center w-75 m-0 p-0 mb-4"></button>
+            <div class="custom-div-separator-warning"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html> 

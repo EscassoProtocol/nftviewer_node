@@ -1,0 +1,113 @@
+.custom-textarea-row{
+    height: 75%;
+}
+.custom-buttons-row{
+    position: relative;
+    left: 2.5%;
+    width: 95%;
+    height: 25%;
+}
+.custom-button-size {
+    width: 10%;
+    height: 50%;
+}
+.custom-textarea{
+    width: 95%;
+    height: 95%;
+    text-align: start;
+}
+.custom-button-separator{
+    width: 3.33%;
+}
+.pinned-proof-div{
+    width: 73.34%;
+}
+.proof-div{
+    width: 45%;
+}
+.proof{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.custom-subject-row{
+    height: 12.5%;
+}
+.custom-subject{
+    width: 95%;
+    height: 90%;
+    text-align: start;
+}
+@media (min-width: 0px) and (max-width: 239.98px) {
+    .custom-font-size {
+        font-size: 0.25em;
+    }
+    .pinned-proof-div{
+        width: 65%;
+    }
+    .custom-button-size {
+        font-size: 0.7rem;
+    }
+    .custom-dialog{
+        left: 10%;
+        width: 80%;
+    }
+}
+@media (min-width: 240px) and (max-width: 359.98px) {
+    .custom-font-size {
+        font-size: 0.5em;
+    }
+    .pinned-proof-div{
+        width: 65%;
+    }
+    .custom-button-size {
+        font-size: 0.7rem;
+    }
+    .custom-dialog{
+        left: 10%;
+        width: 80%;
+    }
+}
+@media (min-width: 360px) and (max-width: 479.98px) {
+    .custom-font-size {
+        font-size: 0.75em;
+    }
+    .custom-button-size {
+        font-size: 0.7rem;
+    }
+}
+@media (min-width: 480px) and (max-width: 575.98px) {
+    .custom-font-size {
+        font-size: 1em;
+    }
+    .custom-button-size {
+        font-size: 0.7rem;
+    }
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .custom-font-size {
+        font-size: 1.25em;
+    }
+    .custom-button-size {
+        font-size: 0.7rem;
+    }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .custom-font-size {
+        font-size: 1.25em;
+    }
+    .custom-button-size {
+        font-size: 0.8rem;
+    }
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .custom-font-size {
+        font-size: 1.25em;
+    }
+}
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+    .custom-font-size {
+        font-size: 1.25em;
+    }
+}
+

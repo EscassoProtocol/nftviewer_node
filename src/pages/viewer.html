@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>NFT Viewer</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../images/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+    <link href="../imports/bootstrap/bootstrap-5.2.min.css" rel="stylesheet">
+    <link href="../styles/loading.css" rel="stylesheet">
+    <link href="../styles/menu.css" rel="stylesheet">
+    <link href="../styles/warning.css" rel="stylesheet">
+    <link href="../styles/container.css" rel="stylesheet">
+    <link href="../styles/viewer.css" rel="stylesheet">
+</head>
+<body style="background:#161616">
+<script type="module" src="../imports/web3-1.7.4.min.js"></script>
+<script src="../imports/detect-provider-1.2.min.js"></script>
+<script type="module" src="../modules/viewer.mjs"></script>
+<div class="d-flex justify-content-center align-items-start">
+    <div class="col custom-main-col">
+        <div class="row custom-top-row g-0 p-0 d-flex justify-content-start align-items-center">
+            <div class="top-div col g-0 p-0 d-flex justify-content-start align-items-center h-100">
+                <div class="menu-button-div col g-0 p-0 d-flex justify-content-center align-items-center h-100">
+                    <button class="menu btn btn-dark p-0 shadow-none button-with-img" type="button">
+                        <div class="row g-0 p-0 d-flex justify-content-center align-items-center h-100">
+                            <img class="img-fluid img-for-button" src="../images/menu_white_48dp.svg"/>
+                        </div>
+                    </button>
+                </div>
+                <div class="logo-div col g-0 p-0 d-flex justify-content-center align-items-center h-100">
+                    <img class="img-fluid h-100" src="../images/logo.svg"/>
+                </div>
+            </div>
+        </div>
+        <div class="row custom-center-row g-0 p-0 d-flex justify-content-start align-items-center" style="overflow: hidden;">
+            <div class="col custom-img-col g-0 p-0 d-flex justify-content-start align-items-center">
+                <img class="image img-fluid"/>
+            </div>
+            <div class="col d-flex custom-info g-0 p-0 justify-content-center align-items-center" style="overflow-x: hidden; overflow-y: auto;">
+                <div class="col g-0 p-0 h-100">
+                    <div class="row custom-info-item" style="top: 0;"></div>
+                    <div class="row custom-info-item d-flex justify-content-start align-items-start w-100 ms-2 me-2 g-0 p-0" style="top: 11%;">
+                        <label class="info custom-text-info text-start m-0 ms-1 fw-bold"></label>
+                    </div>
+                    <div class="row custom-info-item d-flex justify-content-start align-items-start w-100 ms-2 me-2 g-0 p-0" style="top: 22%;">
+                        <div class="col d-flex">
+                            <label class="contract custom-text-info text-start m-0 ms-1"></label>
+                            <a class="contract-link custom-text-info text-start m-0 ms-1"></a>
+                        </div>
+                    </div>
+                    <div class="row custom-info-item d-flex justify-content-start align-items-start w-100 ms-2 me-2 g-0 p-0" style="top: 33%;">
+                        <div class="col d-flex">
+                            <label class="id custom-text-info text-start m-0 ms-1"></label>
+                            <a class="id-link custom-text-info text-start m-0 ms-1"></a>
+                            <button class="minted-button btn btn-secondary p-0 shadow-none ms-2 invisible custom-text-info" type="button">Check Mint Date</button>
+                            <label class="minted-label custom-text-info text-start m-0 ms-1 d-none"></label>
+                        </div>
+                    </div>
+                    <div class="row custom-info-item d-flex justify-content-start align-items-start w-100 ms-2 me-2 g-0 p-0" style="top: 44%;">
+                        <label class="ercType custom-text-info text-start m-0 ms-1"></label>
+                    </div>
+                    <div class="row custom-info-item d-flex justify-content-start align-items-start w-100 ms-2 me-2 g-0 p-0" style="top: 55%;">
+                        <div class="col d-flex">
+                            <label class="uri custom-text-info text-start m-0 ms-1"></label>
+                            <a class="uri-link custom-text-info text-start m-0 ms-1"></a>
+                        </div>
+                    </div>
+                    <div class="row custom-info-item d-flex justify-content-start align-items-start w-100 ms-2 me-2 g-0 p-0" style="top: 66%;">
+                        <div class="col d-flex">
+                            <label class="creator custom-text-info text-start m-0 ms-1"></label>
+                            <button class="creator-button btn btn-secondary p-0 shadow-none ms-2 invisible custom-text-info" type="button">Check Creator</button>
+                            <a class="creator-link custom-text-info text-start m-0 ms-1 d-none"></a>
+                        </div>
+                    </div>
+                    <div class="row custom-info-item d-flex justify-content-start align-items-start w-100 ms-2 me-2 g-0 p-0" style="top: 77%;">
+                        <div class="col d-flex">
+                            <label class="owner custom-text-info text-start m-0 ms-1"></label>
+                            <button class="owner-button btn btn-secondary p-0 shadow-none ms-2 invisible custom-text-info" type="button">Check Current Owner</button>
+                            <a class="owner-link custom-text-info text-start m-0 ms-1 d-none"></a>
+                        </div>
+                    </div>
+                    <div class="row custom-info-item d-flex justify-content-start align-items-start w-100 ms-2 me-2 g-0 p-0" style="top: 88%;">
+                        <label class="name custom-text-info text-start m-0 ms-1"></label>
+                    </div>
+                    <div class="row custom-info-description-links d-flex justify-content-start align-items-start w-100 ms-2 me-2 g-0 p-0">
+                        <label class="description custom-info-description-links-item custom-text-info text-start m-0 ms-1"></label>
+                        <label class="links custom-info-description-links-item custom-text-info text-start m-0 ms-1 mt-3"></label>
+                        <div class="custom-info-description-links-item d-flex justify-content-start align-items-start">
+                            <ul class="custom-list list-group d-flex flex-wrap"></ul>
+                        </div>
+                        <label class="accounts custom-info-description-links-item custom-text-info text-start m-0 ms-1 mt-3"></label>
+                        <div class="custom-info-description-links-item d-flex justify-content-start align-items-start">
+                            <ul class="custom-list list-group d-flex flex-wrap"></ul>
+                        </div>
+                        <div class="custom-bottom-margin"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row custom-bottom-row g-0 p-0 d-flex justify-content-start align-items-center">
+            <div class="row custom-btn-row g-0 p-0 d-flex justify-content-start align-items-center invisible">
+                <div class="col-3 d-flex justify-content-center align-items-center h-75"></div>
+                <div class="col-2 d-flex justify-content-center align-items-center h-75">
+                    <div class="row w-50 h-100 d-flex justify-content-center align-items-center g-0 p-0">
+                        <button class="invisible send btn custom-button btn-warning p-0 shadow-none d-flex justify-content-center align-items-center w-100 h-75" type="button">
+                            <label class="custom-text custom-text-button text-center m-0">Send</label>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-2 d-flex justify-content-center align-items-center h-75">
+                    <div class="row w-50 h-100 d-flex justify-content-center align-items-center g-0 p-0">
+                        <button class="invisible view btn custom-button btn-primary p-0 shadow-none d-flex justify-content-center align-items-center w-100 h-75" type="button">
+                            <label class="view-text custom-long-text-button custom-text-button text-center m-0">View</label>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-2 d-flex justify-content-center align-items-center h-75">
+                    <div class="row w-50 h-100 d-flex justify-content-center align-items-center g-0 p-0">
+                        <button class="invisible burn btn custom-button btn-danger p-0 shadow-none d-flex justify-content-center align-items-center w-100 h-75" type="button">
+                            <label class="custom-text custom-text-button text-center m-0">Burn</label>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-3 d-flex justify-content-center align-items-center h-75"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="custom-spinner-back show" id="spinner-back">
+    <div class="d-flex justify-content-center show" id="spinner-front">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="custom-spinner custom-spinner-size spinner-border d-none d-md-block" role="status"></div>
+                <div class="custom-spinner custom-spinner-size-mob spinner-border d-md-none" role="status"></div>
+            </div>
+            <div class="row d-flex justify-content-center align-items-center">
+                <p></p>
+                Loading...
+            </div>
+        </div>
+    </div>
+</div>
+<div class="background-viewer invisible custom-viewer-background">
+    <div class="d-flex custom-close-viewer-height justify-content-end g-0">
+        <div class="d-flex custom-close-viewer-width justify-content-center align-items-center">
+            <button class="close-viewer btn custom-button btn-danger p-0 d-flex justify-content-center" type="button">
+                <div class="row-sm-12 d-flex justify-content-center align-items-center h-100">
+                    <img class="img-fluid custom-button-img" src="../images/close_white_24dp.svg"/>
+                </div>
+            </button>
+        </div>
+    </div>
+    <div class="invisible h-100" id="div-canvas">
+        <canvas class="custom-viewer-div" id="id-canvas"></canvas>
+    </div>
+</div>
+<div class="background-menu menu-nav-background invisible"></div>
+<nav class="menu-nav invisible">
+    <div class="menu-top-div row g-0 p-0 d-flex justify-content-start align-items-center">
+        <div class="top-div col g-0 p-0 d-flex justify-content-start align-items-center h-100">
+            <div class="menu-button-div col g-0 p-0 d-flex justify-content-center align-items-center h-100">
+                <button class="menu btn btn-dark p-0 shadow-none button-with-img" type="button">
+                    <div class="row g-0 p-0 d-flex justify-content-center align-items-center h-100">
+                        <img class="img-fluid img-for-button" src="../images/menu_white_48dp.svg"/>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+    <ul class="menu-list">
+        <li class="header-menu"><a id="header-menu"></a></li>
+        <li><a href="../pages/index.html" class="a-home">Home</a></li>
+        <li><a href="../pages/settings.html" class="a-settings">Settings</a></li>
+        <li><a href="../pages/contact.html" class="a-contact">Contact</a></li>
+        <li><a href="#" class="a-thanks">Thanks</a></li>
+        <li><a href="#" class="a-about">About</a></li>
+    </ul>
+</nav>
+<div class="dialog-background invisible"></div>
+<div class="custom-dialog-warning rounded-3 invisible">
+    <div class="row custom-dialog-header-warning rounded-3 g-0">
+        <div class="custom-dialog-header-title d-flex rounded-3 justify-content-start align-items-center g-0 w-100">
+            <label class="custom-title-warning form-check-label custom-font-size-warning d-inline-block text-truncate text-center w-100 fw-bold">No Mobile Version</label>
+        </div>
+    </div>
+    <div class="row custom-dialog-body-warning rounded-3 g-0">
+        <div class="row custom-dialog-row-top-warning g-0 d-flex justify-content-center align-items-center">
+            <label class="custom-text-warning form-check-label custom-dialog-col custom-font-size-warning text-center m-0">Unfortunately we don't have a mobile version yet. Access the website from a notebook or a desktop computer.</label>
+        </div>
+        <div class="row custom-dialog-row-bottom-warning g-0 d-flex justify-content-center align-items-center">
+            <div class="custom-div-separator-warning"></div>
+            <a class="custom-text-warning form-check-label custom-dialog-col custom-font-size-warning text-center m-0">Thank you for understanding.</a>
+            <button class="invisible custom-btn-warning btn btn-dark custom-dialog-col custom-font-size-warning text-center w-75 m-0 p-0 mb-4"></button>
+            <div class="custom-div-separator-warning"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html> 
