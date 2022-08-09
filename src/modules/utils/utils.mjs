@@ -6,7 +6,7 @@ class Utils{
     }
 
     async getExplorer(){
-        !localStorage.getItem("explorer") ? localStorage.setItem("explorer", "etherscan.com/") : undefined;
+        !localStorage.getItem("explorer") ? localStorage.setItem("explorer", "etherscan.io/") : undefined;
         return localStorage.getItem("explorer");
     }
 

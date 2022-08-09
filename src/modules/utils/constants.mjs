@@ -21,7 +21,7 @@ class Constants{
     static DEFAULT_RPC_PROVIDER = "https://goerli.infura.io/v3/f3e2ba954dd6423b8c163a5640ae5c21";
     static DEFAULT_MAX_BLOCKS = 2000;
     static DEFAULT_IPFS_GATEWAY_PREFIX = "https://ipfs.io/ipfs/";
-    static DEFAULT_EXPLORER = "etherscan.com/";
+    static DEFAULT_EXPLORER = "etherscan.io/";
     static DEFAULT_USE_OWN_IPFS_SERVER = false;
     static DEFAULT_IPFS_SERVER_URL = "http://127.0.0.1:3001/";
     static DEFAULT_DISABLE_CHECK_UPDATES = false;
